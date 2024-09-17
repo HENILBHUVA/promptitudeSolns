@@ -144,6 +144,11 @@ const Members = () => {
     setOpenDropdown(openDropdown === index ? null : index);
   };
 
+   const userOptions = team.map(user => (
+    <option key={user.user_id} value={user.user_id}>
+      {user.name}
+    </option>
+  ));
   return (
     <div className="members-container">
       <h1>Team Members</h1>
@@ -228,12 +233,13 @@ const Members = () => {
             </select>
             <br />
             <label>Reporting To: </label>
-            <input
-              type="text"
-              name="reporting_to"
-              value={selectedUser.reporting_to}
-              onChange={(e) => setSelectedUser({ ...selectedUser, reporting_to: e.target.value })}
-            />
+            <select
+        value={selectedUser.reporting_to || ''}
+        onChange={(e) => setSelectedUser({ ...selectedUser, reporting_to: e.target.value })}
+      >
+        <option value="">Select Reporting Person</option>
+        {userOptions}
+      </select>
             <br />
             <div className="button-container">
               <button className="update-btn" type="submit">Update</button>
@@ -313,11 +319,13 @@ const Members = () => {
             />
             <br />
             <label>Reporting To: </label>
-            <input
-              type="text"
+            <select
               value={newUser.reporting_to}
               onChange={(e) => setNewUser({ ...newUser, reporting_to: e.target.value })}
-            />
+            >
+              <option value="">Select Reporting Person</option>
+              {userOptions}
+            </select>
             <br />
             <div className="button-container">
               <button className="update-btn" type="submit">Add Member</button>
