@@ -1,7 +1,7 @@
 .members-container {
   font-family: Arial, sans-serif;
   padding: 20px;
-  background-color: #EDE8F5; /* Very Light Gray */
+  background-color: #F5F7FA; /* Light Gray */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
   border-radius: 8px;
   box-sizing: border-box; 
@@ -27,7 +27,7 @@ h1 {
 }
 
 .team-table th {
-  background-color: #F5F7FA; /* Light Gray */
+  background-color: #EDE8F5; /* Very Light Gray */
   text-align: left; 
 }
 
@@ -47,7 +47,7 @@ button {
   z-index: 1000;
   width: 70%; 
   max-width: 800px; 
-  border: 2px solid #7091E6; /* Secondary Blue Color */
+  border: 2px solid #4CAF50; /* Accent Color */
   border-radius: 8px; 
 }
 
@@ -63,14 +63,10 @@ button {
 
 .modal label {
   margin-top: 10px;
-  color: #3D52A0; /* Primary Dark Color */
 }
 
 .modal input {
   margin-bottom: 10px;
-  border: 1px solid #ddd;
-  padding: 8px;
-  border-radius: 4px;
 }
 
 .modal button {
@@ -80,16 +76,18 @@ button {
   align-self: flex-start;
 }
 
-.modal .update-btn, .modal .change-btn, .modal .add-btn {
-  background-color: #7091E6; /* Secondary Blue Color */
+.modal .update-btn, .modal .close-btn {
+  margin-top: 10px;
+  padding: 10px 20px; 
+  max-width: 150px; 
+}
+
+.modal .update-btn, .change-btn, .add-btn {
+  background-color: #4CAF50; /* Accent Color */
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
-
-.modal .update-btn:hover, .modal .change-btn:hover, .modal .add-btn:hover {
-  background-color: #3D52A0; /* Primary Dark Color */
 }
 
 .modal .close-btn {
@@ -100,8 +98,8 @@ button {
   cursor: pointer;
 }
 
-.modal .close-btn:hover {
-  background-color: #D32F2F; /* Darker Error Color */
+.modal .update-btn:hover, .modal .close-btn:hover {
+  opacity: 0.8; 
 }
 
 .error-message {
@@ -129,7 +127,7 @@ button {
 }
 
 .dropdown-menu li:hover {
-  background-color: #F5F7FA; /* Light Gray */
+  background-color: #EDE8F5; /* Very Light Gray */
 }
 
 .add-member-btn {
@@ -154,6 +152,16 @@ button {
   justify-content: space-between; /* Ensures space between elements */
   margin-bottom: 10px; 
 }
+.search-bar-container div {
+  display: flex;
+  align-items: center; /* Vertically center the icon and input */
+}
+
+.search-icon {
+  margin-right: 8px; /* Space between the icon and input field */
+  color: #555; /* Icon color */
+  font-size: 1.2em; /* Size of the icon */
+}
 
 .search-bar-container input {
   width: 200px; 
@@ -162,3 +170,4 @@ button {
   border-radius: 4px;
   margin-right: 10px; 
 }
+

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Members.css';
+import { FaSearch } from 'react-icons/fa';
 
 // User Class
 class User {
@@ -141,12 +142,15 @@ const Members = () => {
 
       {/* Search Bar */}
       <div className="search-bar-container">
+        <div>
+      <FaSearch className="search-icon" />
         <input
           type="text"
-          placeholder="Search by name or role..."
+          placeholder= "Search by name or role..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+        </div>
       <button className="add-member-btn" onClick={handleAddButtonClick}>Add Member</button>
       </div>
       <table className="team-table">
