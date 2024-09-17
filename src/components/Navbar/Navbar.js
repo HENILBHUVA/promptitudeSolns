@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaTasks, FaUserFriends, FaBell, FaUsers, FaLock, FaUser, FaChevronUp, FaChevronDown } from 'react-icons/fa'; // Importing icons
 import './Navbar.css';
 
 function Navbar() {
-  const [activeMenu, setActiveMenu] = useState(null); // Store the active menu
+  const [activeMenu, setActiveMenu] = useState(null); 
 
-  // Toggle the dropdown for the clicked menu or close it if clicked again
+  
   const toggleDropdown = (menu) => {
     setActiveMenu(activeMenu === menu ? null : menu);
   };
 
-  // Function to close the dropdown when a non-dropdown menu item is clicked
   const handleNonDropdownClick = () => {
-    setActiveMenu(null); // Close any open dropdowns
+    setActiveMenu(null); 
   };
 
   return (
@@ -20,12 +20,12 @@ function Navbar() {
       <ul>
         {/* Dashboard Link - No dropdown */}
         <li className="dashboard" onClick={handleNonDropdownClick}>
-          <Link to="/">Dashboard</Link>
+          <Link to="/"> Dashboard</Link>
         </li>
 
         {/* Tasks Section */}
         <li className="heading" onClick={() => toggleDropdown('tasks')}>
-          Tasks {activeMenu === 'tasks' ? '▲' : '▼'}
+          <FaTasks className="icon" /> Tasks {activeMenu === 'tasks' ? <FaChevronUp /> : <FaChevronDown />}
         </li>
         {activeMenu === 'tasks' && (
           <ul className="dropdown">
@@ -38,12 +38,12 @@ function Navbar() {
 
         {/* Clients Link - No dropdown */}
         <li className="heading" onClick={handleNonDropdownClick}>
-          <Link to="/clients">Clients</Link>
+          <FaUserFriends className="icon" /> <Link to="/clients">Clients</Link>
         </li>
 
         {/* Vaults Section */}
         <li className="heading" onClick={() => toggleDropdown('vaults')}>
-          Vaults {activeMenu === 'vaults' ? '▲' : '▼'}
+         <FaLock className="icon" /> Vaults {activeMenu === 'vaults' ? <FaChevronUp /> : <FaChevronDown />}
         </li>
         {activeMenu === 'vaults' && (
           <ul className="dropdown">
@@ -54,12 +54,12 @@ function Navbar() {
 
         {/* Reminder Link - No dropdown */}
         <li className="heading" onClick={handleNonDropdownClick}>
-          <Link to="/reminder">Reminder</Link>
+          <FaBell className="icon"/> <Link to="/reminder">Reminder</Link>
         </li>
 
         {/* My Account Section */}
         <li className="heading" onClick={() => toggleDropdown('myAccount')}>
-          My Account {activeMenu === 'myAccount' ? '▲' : '▼'}
+          <FaUser className="icon" /> My Account {activeMenu === 'myAccount' ? <FaChevronUp /> : <FaChevronDown />}
         </li>
         {activeMenu === 'myAccount' && (
           <ul className="dropdown">
@@ -70,7 +70,7 @@ function Navbar() {
 
         {/* My Teams Section */}
         <li className="heading" onClick={() => toggleDropdown('myTeams')}>
-          My Teams {activeMenu === 'myTeams' ? '▲' : '▼'}
+          <FaUsers className="icon" /> My Teams {activeMenu === 'myTeams' ? <FaChevronUp /> : <FaChevronDown />}
         </li>
         {activeMenu === 'myTeams' && (
           <ul className="dropdown">
@@ -84,4 +84,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

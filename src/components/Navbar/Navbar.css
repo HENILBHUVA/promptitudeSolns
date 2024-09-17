@@ -1,11 +1,11 @@
 /* Navbar Container */
 .navbar {
   width: 20%;
-  background-color: #6D7CC6; /* Lighter Blue Color */
+  background-color: #6D7CC6; 
   padding: 10px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   height: 100vh;
-  color: #FFFFFF; /* Text Color (Light) */
+  color: #FFFFFF; 
 }
 
 /* Navbar List */
@@ -21,15 +21,17 @@
   font-size: 20px;
   padding: 10px 15px;
   cursor: pointer;
-  border-bottom: 1px solid #ADBBDA; /* Light Blue/Grey Color for border */
+  border-bottom: 1px solid #ADBBDA; 
   text-align: center;
+  display: flex;
 }
 
 .dashboard a {
   text-decoration: none;
-  color: #FFFFFF; /* Text Color (Light) */
+  color: #FFFFFF; 
   width: 100%;
   display: block;
+  font-size: 24px;
 }
 
 /* Heading Section */
@@ -37,20 +39,27 @@
   font-size: 18px;
   padding: 10px 15px;
   cursor: pointer;
-  border-bottom: 1px solid #ADBBDA; /* Light Blue/Grey Color for border */
+  border-bottom: 1px solid #ADBBDA; 
   font-weight: bold;
   transition: background-color 0.2s ease-in;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
 }
 
+.icon {
+  margin-right: 10px; 
+  font-size: 16px;
+}
 .heading a {
   text-decoration: none;
-  color: #FFFFFF; /* Text Color (Light) */
+  color: #FFFFFF; 
   width: 100%;
   display: block;
 }
 
 .heading:hover {
-  background-color: #7091E6; /* Secondary Blue Color */
+  background-color: #7091E6; 
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -64,7 +73,7 @@
 /* Subheading in Dropdown */
 .subheading {
   padding: 10px;
-  border-bottom: 1px solid #EDE8F5; /* Very Light Color for border */
+  border-bottom: 1px solid #EDE8F5;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -73,19 +82,19 @@
 
 .subheading a {
   text-decoration: none;
-  color: #FFFFFF; /* Text Color (Light) */
+  color: #FFFFFF; 
   display: block;
   width: 100%;
 }
 
 .subheading:hover {
-  background-color: #7091E6; /* Secondary Blue Color */
+  background-color: #7091E6; 
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .subheading a:hover {
-  color: #FFFFFF; /* Text Color (Light) */
+  color: #FFFFFF; 
 }
 
 /* Responsive Styles */
