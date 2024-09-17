@@ -136,6 +136,12 @@ const Members = () => {
     setOpenDropdown(openDropdown === index ? null : index);
   };
 
+    const userOptions = team.map(user => (
+    <option key={user.user_id} value={user.user_id}>
+      {user.name}
+    </option>
+  ));
+
   return (
     <div className="members-container">
       <h1>Team Members</h1>
@@ -302,12 +308,14 @@ const Members = () => {
       />
       <br />
       <label>Reporting To: </label>
-      <input
-        type="text"
-        value={newUser.reporting_to}
-        onChange={(e) => setNewUser({ ...newUser, reporting_to: e.target.value })}
-      />
-      <br />
+      <select
+  value={newUser.reporting_to}
+  onChange={(e) => setNewUser({ ...newUser, reporting_to: e.target.value })}
+>
+  <option value="">Select Reporting Person</option>
+  {userOptions} {/* Display only user names */}
+</select>
+            <br />
       <div className="button-container">
         <button className="update-btn" type="submit">Add Member</button>
         <button className="close-btn" type="button" onClick={() => setAddModalOpen(false)}>Close</button>
