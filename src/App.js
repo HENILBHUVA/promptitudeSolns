@@ -2,13 +2,13 @@ import React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Header from './components/Header/Header';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Dashboard from './components/Pages/Dashboard';
-import Tasks from './components/Pages/Tasks';
-import Clients from './components/Pages/Clients';
-import Vaults from './components/Pages/Vaults';
-import Reminder from './components/Pages/Reminder';
-import MyAccount from './components/Pages/MyAccount';
-import Members from './components/Pages/Teams/Members'; // Importing the Members component
+import Dashboard from './Pages/Dashboard';
+import Tasks from './Pages/Tasks';
+import Clients from './Pages/Clients';
+import Vaults from './Pages/Vaults';
+import Reminder from './Pages/Reminder';
+import MyAccount from './Pages/MyAccount';
+import Members from './Pages/Teams/Members'; // Importing the Members component
 import './App.css';
 
 function App() {
