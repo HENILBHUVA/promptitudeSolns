@@ -337,9 +337,9 @@ const [viewMoreUser, setViewMoreUser] = useState(null);
     <p><strong>Phone Number:</strong> {viewMoreUser.phone_number}</p>
     <p><strong>Email ID:</strong> {viewMoreUser.email_id}</p>
     <p><strong>Alternate Phone Number:</strong> {viewMoreUser.alternate_pho_no}</p>
-    <p><strong>Clients:</strong> {viewMoreUser.clients.join(", ")}</p>
+    <p><strong>Clients:</strong> {viewMoreUser.clients.length}</p>
     <p><strong>Reporting To:</strong> {viewMoreUser.reporting_to}</p>
-    <p><strong>Tasks:</strong> {viewMoreUser.tasks.join(", ")}</p>
+    <p><strong>Tasks:</strong> {viewMoreUser.tasks.length}</p>
     <button className="close-btn" onClick={() => setViewMoreModalOpen(false)}>Close</button>
   </div>
 )}
