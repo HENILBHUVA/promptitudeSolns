@@ -18,7 +18,7 @@
 /* Dashboard Section */
 .dashboard {
   font-weight: bolder;
-  font-size: 18px; /* Font size adjusted */
+  font-size: 20px;
   padding: 10px 15px;
   cursor: pointer;
   border-bottom: 1px solid #ADBBDA; /* Light Blue/Grey Color for border */
@@ -38,6 +38,8 @@
   padding: 10px 15px;
   cursor: pointer;
   border-bottom: 1px solid #ADBBDA; /* Light Blue/Grey Color for border */
+  font-weight: bold;
+  transition: background-color 0.2s ease-in;
 }
 
 .heading a {
@@ -49,6 +51,8 @@
 
 .heading:hover {
   background-color: #7091E6; /* Secondary Blue Color */
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Dropdown Menu */
@@ -64,6 +68,7 @@
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  transition: background-color 0.2s ease-in;
 }
 
 .subheading a {
@@ -75,7 +80,8 @@
 
 .subheading:hover {
   background-color: #7091E6; /* Secondary Blue Color */
-  transition: background-color 0.2s ease-in;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .subheading a:hover {
