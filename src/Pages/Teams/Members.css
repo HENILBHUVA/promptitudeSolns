@@ -47,7 +47,6 @@ button {
   z-index: 1000;
   width: 70%; 
   max-width: 800px; 
-  border: 2px solid #4CAF50; /* Accent Color */
   border-radius: 8px; 
 }
 
@@ -63,10 +62,14 @@ button {
 
 .modal label {
   margin-top: 10px;
+  color: #3D52A0; /* Primary Dark Color */
 }
 
 .modal input {
   margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 .modal button {
@@ -74,31 +77,32 @@ button {
   padding: 10px 20px; 
   max-width: 150px; 
   align-self: flex-start;
-}
-
-.modal .update-btn, .modal .close-btn {
-  margin-top: 10px;
-  padding: 10px 20px; 
-  max-width: 150px; 
-}
-
-.modal .update-btn, .change-btn, .add-btn {
-  background-color: #4CAF50; /* Accent Color */
-  color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.modal .update-btn {
+  background-color: #7091E6; /* Secondary Blue Color */
+  color: #FFFFFF; /* Text Color (Light) */
 }
 
 .modal .close-btn {
   background-color: #F44336; /* Error Color */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  color: #FFFFFF; /* Text Color (Light) */
 }
 
 .modal .update-btn:hover, .modal .close-btn:hover {
+  opacity: 0.8; /* Optional: Adjust hover opacity if needed */
+}
+
+
+.modal .add-btn, .modal .change-btn {
+  background-color: #7091E6; /* Secondary Blue Color */
+  color: white;
+}
+
+.modal .add-btn:hover, .modal .change-btn:hover {
   opacity: 0.8; 
 }
 
@@ -107,6 +111,32 @@ button {
   font-size: 14px;
   margin-top: 10px;
 }
+
+.modal input,
+.modal select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.modal select {
+  background-color: #FFFFFF; 
+  color: #333; 
+  appearance: none; 
+}
+
+.modal select:focus {
+  border-color: #3D52A0; /* Focus color */
+  outline: none;
+}
+
+.modal input:focus,
+.modal select:focus {
+  border-color: #3D52A0; 
+}
+
 
 .dropdown-menu {
   top: 100%;

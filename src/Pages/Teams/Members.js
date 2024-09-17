@@ -93,7 +93,7 @@ const Members = () => {
 
   const handleChangePassword = () => {
     if (!newPassword || !confirmPassword) {
-      setError('Password fields cannot be blank.');
+      setError('Password fields cannot be blank.*');
       return;
     }
     if (newPassword === confirmPassword) {
@@ -105,7 +105,7 @@ const Members = () => {
       setError('');
       alert('Password updated successfully!');
     } else {
-      setError('Passwords do not match.');
+      setError('Passwords do not match.*');
     }
   };
 
@@ -143,15 +143,15 @@ const Members = () => {
       {/* Search Bar */}
       <div className="search-bar-container">
         <div>
-      <FaSearch className="search-icon" />
-        <input
-          type="text"
-          placeholder= "Search by name or role..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+          <FaSearch className="search-icon" />
+          <input
+            type="text"
+            placeholder="Search by name or role..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
-      <button className="add-member-btn" onClick={handleAddButtonClick}>Add Member</button>
+        <button className="add-member-btn" onClick={handleAddButtonClick}>Add Member</button>
       </div>
       <table className="team-table">
         <thead>
@@ -207,12 +207,14 @@ const Members = () => {
             />
             <br />
             <label>Role: </label>
-            <input
-              type="text"
+            <select
               name="role"
               value={selectedUser.role}
               onChange={(e) => setSelectedUser({ ...selectedUser, role: e.target.value })}
-            />
+            >
+              <option value="Admin">Admin</option>
+              <option value="Member">Member</option>
+            </select>
             <br />
             <label>Reporting To: </label>
             <input
@@ -248,7 +250,7 @@ const Members = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <br />
-            {error && <p className="error">{error}</p>}
+            {error && <p className="error-message">{error}</p>}
             <div className="button-container">
               <button className="update-btn" type="submit">Change Password</button>
               <button className="close-btn" type="button" onClick={() => setPasswordModalOpen(false)}>Close</button>
