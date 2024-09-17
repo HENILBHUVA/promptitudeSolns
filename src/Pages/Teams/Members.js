@@ -81,9 +81,17 @@ const Members = () => {
   };
 
   const handleToggleStatus = (user) => {
-    const updatedTeam = team.map((u) => (u.user_id === user.user_id ? { ...u, status: !u.status } : u));
-    setTeam(updatedTeam);
+    const confirmed = window.confirm(
+      `Are you sure you want to ${user.status ? 'disable' : 'enable'} this user?`
+    );
+    if (confirmed) {
+      const updatedTeam = team.map((u) =>
+        u.user_id === user.user_id ? { ...u, status: !u.status } : u
+      );
+      setTeam(updatedTeam);
+    }
   };
+  
 
   const handleUpdateUser = (updatedUser) => {
     const updatedTeam = team.map((u) => (u.user_id === updatedUser.user_id ? updatedUser : u));
@@ -318,8 +326,6 @@ const Members = () => {
           </form>
         </div>
       )}
-
-
     </div>
   );
 };
