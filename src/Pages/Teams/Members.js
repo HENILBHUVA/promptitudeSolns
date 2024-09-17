@@ -49,21 +49,18 @@ const Members = () => {
   const [openDropdown, setOpenDropdown] = useState(null); // State for kebab menu
   const [searchTerm, setSearchTerm] = useState(''); // State for search input
   const [isViewMoreModalOpen, setViewMoreModalOpen] = useState(false);
-const [viewMoreUser, setViewMoreUser] = useState(null);
-
+  const [viewMoreUser, setViewMoreUser] = useState(null);
 
   // Filtered team members based on search term
   const filteredTeam = team.filter(member =>
     member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     member.role.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  
 
   const handleViewMore = (user) => {
     setViewMoreUser(user);
     setViewMoreModalOpen(true);
   };
-  
 
   const handleUpdate = (user) => {
     setSelectedUser(user);
@@ -86,7 +83,6 @@ const [viewMoreUser, setViewMoreUser] = useState(null);
       setTeam(updatedTeam);
     }
   };
-  
 
   const handleUpdateUser = (updatedUser) => {
     const updatedTeam = team.map((u) => (u.user_id === updatedUser.user_id ? updatedUser : u));
@@ -128,6 +124,8 @@ const [viewMoreUser, setViewMoreUser] = useState(null);
       email_id: '',
       alternate_pho_no: '',
       reporting_to: '',
+      tasks: [],
+      clients: [],
     });
   };
 
@@ -139,20 +137,21 @@ const [viewMoreUser, setViewMoreUser] = useState(null);
     setOpenDropdown(openDropdown === index ? null : index);
   };
 
-   const userOptions = team.map(user => (
+  const userOptions = team.map(user => (
     <option key={user.user_id} value={user.user_id}>
       {user.name}
     </option>
   ));
+
   return (
     <div className="members-container">
-      <h1>Team Members</h1>
+      <h1 className='page-heading'>Team Members</h1>
 
       {/* Search Bar */}
       <div className="search-bar-container">
-        <div>
+        <div className="input-wrapper">
           <FaSearch className="search-icon" />
-          <input
+          <input 
             type="text"
             placeholder="Search by name or role..."
             value={searchTerm}
@@ -161,6 +160,7 @@ const [viewMoreUser, setViewMoreUser] = useState(null);
         </div>
         <button className="add-member-btn" onClick={handleAddButtonClick}>Add Member</button>
       </div>
+
       <table className="team-table">
         <thead>
           <tr>
@@ -179,25 +179,23 @@ const [viewMoreUser, setViewMoreUser] = useState(null);
               <td>{member.name}</td>
               <td>{member.role}</td>
               <td>{member.status ? 'Active' : 'Inactive'}</td>
-              <td>{member.clients.join(', ')}</td>
-              <td>{member.tasks.join(', ')}</td>
+              <td>{member.clients.length}</td>
+              <td>{member.tasks.length}</td>
               <td>{member.reporting_to}</td>
               <td>
-                <div className="dropdown">
+                <div className={`dropdown ${openDropdown === index ? 'active' : ''}`}>
                   <button className="kebab-menu" onClick={() => toggleDropdown(index)}>
                     {openDropdown === index ? <FaTimes /> : <FaEllipsisV />}
                   </button>
 
-                  {openDropdown === index && (
-                    <ul className="dropdown-menu">
-                      <li onClick={() => handleViewMore(member)}>View More</li>
-                      <li onClick={() => handleUpdate(member)}>Update</li>
-                      <li onClick={() => handlePasswordChange(member)}>Change Password</li>
-                      <li onClick={() => handleToggleStatus(member)}>
-                        {member.status ? 'Disable' : 'Enable'}
-                      </li>
-                    </ul>
-                  )}
+                  <ul className="dropdown-menu">
+                    <li onClick={() => handleViewMore(member)}>View More</li>
+                    <li onClick={() => handleUpdate(member)}>Update</li>
+                    <li onClick={() => handlePasswordChange(member)}>Change Password</li>
+                    <li onClick={() => handleToggleStatus(member)}>
+                      {member.status ? 'Disable' : 'Enable'}
+                    </li>
+                  </ul>
                 </div>
               </td>
             </tr>
@@ -216,7 +214,7 @@ const [viewMoreUser, setViewMoreUser] = useState(null);
               value={selectedUser.name}
               onChange={(e) => setSelectedUser({ ...selectedUser, name: e.target.value })}
             />
-            <br />
+            {/* <br /> */}
             <label>Role: </label>
             <select
               name="role"
@@ -226,16 +224,16 @@ const [viewMoreUser, setViewMoreUser] = useState(null);
               <option value="Admin">Admin</option>
               <option value="Member">Member</option>
             </select>
-            <br />
+            {/* <br /> */}
             <label>Reporting To: </label>
             <select
-        value={selectedUser.reporting_to || ''}
-        onChange={(e) => setSelectedUser({ ...selectedUser, reporting_to: e.target.value })}
-      >
-        <option value="">Select Reporting Person</option>
-        {userOptions}
-      </select>
-            <br />
+              value={selectedUser.reporting_to || ''}
+              onChange={(e) => setSelectedUser({ ...selectedUser, reporting_to: e.target.value })}
+            >
+              <option value="">Select Reporting Person</option>
+              {userOptions}
+            </select>
+            {/* <br /> */}
             <div className="button-container">
               <button className="update-btn" type="submit">Update</button>
               <button className="close-btn" type="button" onClick={() => setUpdateModalOpen(false)}>Close</button>
@@ -254,14 +252,14 @@ const [viewMoreUser, setViewMoreUser] = useState(null);
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
             />
-            <br />
+            {/* <br /> */}
             <label>Confirm Password: </label>
             <input
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            <br />
+            {/* <br /> */}
             {error && <p className="error-message">{error}</p>}
             <div className="button-container">
               <button className="update-btn" type="submit">Change Password</button>
@@ -281,7 +279,7 @@ const [viewMoreUser, setViewMoreUser] = useState(null);
               value={newUser.name}
               onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
             />
-            <br />
+            {/* <br /> */}
             <label>Role: </label>
             <select
               value={newUser.role}
@@ -291,28 +289,34 @@ const [viewMoreUser, setViewMoreUser] = useState(null);
               <option value="Admin">Admin</option>
               <option value="Member">Member</option>
             </select>
-            <br />
+            {/* <br /> */}
             <label>Email ID: </label>
             <input
               type="email"
               value={newUser.email_id}
               onChange={(e) => setNewUser({ ...newUser, email_id: e.target.value })}
             />
-            <br />
-            <label>Phone Number: </label>
+            {/* <br /> */}
+           <div className='row-fields'>
+          <div>
+          <label>Phone Number: </label>
             <input
               type="text"
               value={newUser.phone_number}
               onChange={(e) => setNewUser({ ...newUser, phone_number: e.target.value })}
             />
-            <br />
-            <label>Alternate Phone Number: </label>
+          </div>
+            {/* <br /> */}
+          <div>
+          <label>Alternate Phone Number: </label>
             <input
               type="text"
               value={newUser.alternate_pho_no}
               onChange={(e) => setNewUser({ ...newUser, alternate_pho_no: e.target.value })}
             />
-            <br />
+          </div>
+           </div>
+            {/* <br /> */}
             <label>Reporting To: </label>
             <select
               value={newUser.reporting_to}
@@ -321,7 +325,7 @@ const [viewMoreUser, setViewMoreUser] = useState(null);
               <option value="">Select Reporting Person</option>
               {userOptions}
             </select>
-            <br />
+            {/* <br /> */}
             <div className="button-container">
               <button className="update-btn" type="submit">Add Member</button>
               <button className="close-btn" type="button" onClick={() => setAddModalOpen(false)}>Close</button>
@@ -329,20 +333,21 @@ const [viewMoreUser, setViewMoreUser] = useState(null);
           </form>
         </div>
       )}
+
       {isViewMoreModalOpen && viewMoreUser && (
-  <div className="modal">
-    <h2>User Details</h2>
-    <p><strong>Name:</strong> {viewMoreUser.name}</p>
-    <p><strong>Role:</strong> {viewMoreUser.role}</p>
-    <p><strong>Phone Number:</strong> {viewMoreUser.phone_number}</p>
-    <p><strong>Email ID:</strong> {viewMoreUser.email_id}</p>
-    <p><strong>Alternate Phone Number:</strong> {viewMoreUser.alternate_pho_no}</p>
-    <p><strong>Clients:</strong> {viewMoreUser.clients.length}</p>
-    <p><strong>Reporting To:</strong> {viewMoreUser.reporting_to}</p>
-    <p><strong>Tasks:</strong> {viewMoreUser.tasks.length}</p>
-    <button className="close-btn" onClick={() => setViewMoreModalOpen(false)}>Close</button>
-  </div>
-)}
+        <div className="modal">
+          <h2>User Details</h2>
+          <p><strong>Name:</strong> {viewMoreUser.name}</p>
+          <p><strong>Role:</strong> {viewMoreUser.role}</p>
+          <p><strong>Phone Number:</strong> {viewMoreUser.phone_number}</p>
+          <p><strong>Email ID:</strong> {viewMoreUser.email_id}</p>
+          <p><strong>Alternate Phone Number:</strong> {viewMoreUser.alternate_pho_no}</p>
+          <p><strong>Clients:</strong> {viewMoreUser.clients.length}</p>
+          <p><strong>Reporting To:</strong> {viewMoreUser.reporting_to}</p>
+          <p><strong>Tasks:</strong> {viewMoreUser.tasks.length}</p>
+          <button className="close-btn" onClick={() => setViewMoreModalOpen(false)}>Close</button>
+        </div>
+      )}
 
     </div>
   );

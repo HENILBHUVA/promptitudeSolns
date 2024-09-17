@@ -9,10 +9,10 @@ function Header() {
       <h1>Promptitude</h1>
       <div className="header-icons">
         <Link to="/notifications">
-          <FaBell className="icon" />
+          <FaBell className="header-icon" />
         </Link>
         <Link to="/profile">
-          <FaUser className="icon" />
+          <FaUser className="header-icon" />
         </Link>
       </div>
     </div>
