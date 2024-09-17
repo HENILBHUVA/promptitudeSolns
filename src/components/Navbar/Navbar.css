@@ -1,86 +1,88 @@
+/* Navbar Container */
 .navbar {
   width: 20%;
-  background-color: black;
-  /* background-color: #f8f9fa; */
+  background-color: #6D7CC6; /* Lighter Blue Color */
   padding: 10px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   height: 100vh;
-  color: white;
+  color: #FFFFFF; /* Text Color (Light) */
 }
 
+/* Navbar List */
 .navbar ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
+
+/* Dashboard Section */
 .dashboard {
   font-weight: bolder;
-  font-size: 24px !important; 
-  font-size: 18px; 
+  font-size: 18px; /* Font size adjusted */
   padding: 10px 15px;
   cursor: pointer;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ADBBDA; /* Light Blue/Grey Color for border */
   text-align: center;
 }
+
 .dashboard a {
   text-decoration: none;
-  color: white;
+  color: #FFFFFF; /* Text Color (Light) */
   width: 100%;
   display: block;
 }
 
+/* Heading Section */
 .heading {
-  /* font-weight: bolder; */
-  font-size: 18px; 
+  font-size: 18px;
   padding: 10px 15px;
   cursor: pointer;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ADBBDA; /* Light Blue/Grey Color for border */
 }
 
 .heading a {
   text-decoration: none;
-  color: white;
+  color: #FFFFFF; /* Text Color (Light) */
   width: 100%;
   display: block;
 }
 
 .heading:hover {
-  /* background-color: #e2e6ea; */
+  background-color: #7091E6; /* Secondary Blue Color */
 }
 
-
+/* Dropdown Menu */
 .dropdown {
   list-style-type: none;
   padding-left: 20px;
 }
 
-
+/* Subheading in Dropdown */
 .subheading {
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #EDE8F5; /* Very Light Color for border */
   cursor: pointer;
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
 .subheading a {
   text-decoration: none;
-  color: white;
+  color: #FFFFFF; /* Text Color (Light) */
   display: block;
   width: 100%;
 }
 
-
 .subheading:hover {
-  background-color: #59358a; 
+  background-color: #7091E6; /* Secondary Blue Color */
   transition: background-color 0.2s ease-in;
 }
 
 .subheading a:hover {
-  color: white; 
+  color: #FFFFFF; /* Text Color (Light) */
 }
 
-
+/* Responsive Styles */
 @media screen and (max-width: 768px) {
   .navbar {
     width: 100%;

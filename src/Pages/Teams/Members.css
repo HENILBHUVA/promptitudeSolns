@@ -1,7 +1,7 @@
 .members-container {
   font-family: Arial, sans-serif;
   padding: 20px;
-  background-color: #fff; 
+  background-color: #EDE8F5; /* Very Light Gray */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
   border-radius: 8px;
   box-sizing: border-box; 
@@ -11,6 +11,7 @@
 
 h1 {
   text-align: center;
+  color: #3D52A0; /* Primary Dark Color */
 }
 
 .team-table {
@@ -19,7 +20,6 @@ h1 {
   width: 100%; 
 }
 
-
 .team-table th,
 .team-table td {
   border: 1px solid #ddd; 
@@ -27,7 +27,7 @@ h1 {
 }
 
 .team-table th {
-  background-color: #f4f4f4; 
+  background-color: #F5F7FA; /* Light Gray */
   text-align: left; 
 }
 
@@ -41,18 +41,19 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: white;
+  background: #FFFFFF; /* White */
   padding: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   width: 70%; 
   max-width: 800px; 
-  border: 2px solid #4CAF50; 
+  border: 2px solid #7091E6; /* Secondary Blue Color */
   border-radius: 8px; 
 }
 
 .modal h2 {
   margin-top: 0;
+  color: #3D52A0; /* Primary Dark Color */
 }
 
 .modal form {
@@ -62,10 +63,14 @@ button {
 
 .modal label {
   margin-top: 10px;
+  color: #3D52A0; /* Primary Dark Color */
 }
 
 .modal input {
   margin-bottom: 10px;
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 4px;
 }
 
 .modal button {
@@ -75,43 +80,40 @@ button {
   align-self: flex-start;
 }
 
-.modal .update-btn, .modal .close-btn {
-  margin-top: 10px;
-  padding: 10px 20px; 
-  max-width: 150px; 
-}
-
-.modal .update-btn, .change-btn, .add-btn {
-  background-color: #4CAF50; 
+.modal .update-btn, .modal .change-btn, .modal .add-btn {
+  background-color: #7091E6; /* Secondary Blue Color */
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.modal .update-btn:hover, .modal .change-btn:hover, .modal .add-btn:hover {
+  background-color: #3D52A0; /* Primary Dark Color */
 }
 
 .modal .close-btn {
-  background-color: #f44336;
+  background-color: #F44336; /* Error Color */
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.modal .update-btn:hover, .modal .close-btn:hover {
-  opacity: 0.8; 
+.modal .close-btn:hover {
+  background-color: #D32F2F; /* Darker Error Color */
 }
 
 .error-message {
-  color: red;
+  color: #F44336; /* Error Color */
   font-size: 14px;
   margin-top: 10px;
 }
 
-
 .dropdown-menu {
   top: 100%;
   right: 0;
-  background-color: #f9f9f9;
+  background-color: #FFFFFF; /* White */
   min-width: 160px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -119,18 +121,20 @@ button {
   padding: 0;
   margin: 0;
 }
+
 .dropdown-menu li {
   padding: 2px 6px;
   cursor: pointer;
   border-bottom: 1px solid #ddd;
 }
+
 .dropdown-menu li:hover {
-  background-color: #f1f1f1;
+  background-color: #F5F7FA; /* Light Gray */
 }
 
 .add-member-btn {
-  background-color: #59358a; 
-  color: #ffffff; 
+  background-color: #3D52A0; /* Primary Dark Color */
+  color: #FFFFFF; /* Text Color (Light) */
   border: none; 
   border-radius: 4px; 
   padding: 10px 20px; 
@@ -140,9 +144,10 @@ button {
 }
 
 .add-member-btn:hover {
-  background-color: #301555; 
+  background-color: #7091E6; /* Secondary Blue Color */
   transform: scale(1.05); 
 }
+
 .search-bar-container {
   display: flex;
   align-items: center;

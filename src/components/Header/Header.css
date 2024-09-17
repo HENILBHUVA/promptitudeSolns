@@ -1,29 +1,28 @@
-  .header {
-     background-color: #59358a;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    font-weight: bold;
-  }
-  
-  .header h1 {
-    margin: 0;
-    color: white;
-  }
-  
-  .header-icons {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .icon {
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .icon:hover {
-    color: black;
-  }
-  
+.header {
+  background-color: #3D52A0; /* Primary Dark Color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.header h1 {
+  margin: 0;
+  color: #FFFFFF; /* Text Color (Light) */
+}
+
+.header-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.icon {
+  font-size: 30px;
+  color: #FFFFFF; /* Text Color (Light) */
+  cursor: pointer;
+}
+
+.icon:hover {
+  color: #7091E6; /* Lighter Blue Color for hover effect */
+}
