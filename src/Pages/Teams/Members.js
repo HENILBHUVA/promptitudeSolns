@@ -81,9 +81,17 @@ const Members = () => {
   };
 
   const handleToggleStatus = (user) => {
-    const updatedTeam = team.map((u) => (u.user_id === user.user_id ? { ...u, status: !u.status } : u));
-    setTeam(updatedTeam);
+    const confirmed = window.confirm(
+      `Are you sure you want to ${user.status ? 'disable' : 'enable'} this user?`
+    );
+    if (confirmed) {
+      const updatedTeam = team.map((u) =>
+        u.user_id === user.user_id ? { ...u, status: !u.status } : u
+      );
+      setTeam(updatedTeam);
+    }
   };
+  
 
   const handleUpdateUser = (updatedUser) => {
     const updatedTeam = team.map((u) => (u.user_id === updatedUser.user_id ? updatedUser : u));
@@ -308,6 +316,7 @@ const Members = () => {
         onChange={(e) => setNewUser({ ...newUser, reporting_to: e.target.value })}
       />
             <br />
+<<<<<<< HEAD
       <div className="button-container">
         <button className="update-btn" type="submit">Add Member</button>
         <button className="close-btn" type="button" onClick={() => setAddModalOpen(false)}>Close</button>
@@ -317,6 +326,53 @@ const Members = () => {
 )}
 
       
+=======
+            <label>Role: </label>
+            <select
+              value={newUser.role}
+              onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
+              className="styled-select"
+            >
+              <option value="Admin">Admin</option>
+              <option value="Member">Member</option>
+            </select>
+            <br />
+            <label>Email ID: </label>
+            <input
+              type="email"
+              value={newUser.email_id}
+              onChange={(e) => setNewUser({ ...newUser, email_id: e.target.value })}
+            />
+            <br />
+            <label>Phone Number: </label>
+            <input
+              type="text"
+              value={newUser.phone_number}
+              onChange={(e) => setNewUser({ ...newUser, phone_number: e.target.value })}
+            />
+            <br />
+            <label>Alternate Phone Number: </label>
+            <input
+              type="text"
+              value={newUser.alternate_pho_no}
+              onChange={(e) => setNewUser({ ...newUser, alternate_pho_no: e.target.value })}
+            />
+            <br />
+            <label>Reporting To: </label>
+            <input
+              type="text"
+              value={newUser.reporting_to}
+              onChange={(e) => setNewUser({ ...newUser, reporting_to: e.target.value })}
+            />
+            <br />
+            <div className="button-container">
+              <button className="update-btn" type="submit">Add Member</button>
+              <button className="close-btn" type="button" onClick={() => setAddModalOpen(false)}>Close</button>
+            </div>
+          </form>
+        </div>
+      )}
+>>>>>>> 0799821d1b6d30aa8f55837c05e9510169566d10
     </div>
   );
 };
