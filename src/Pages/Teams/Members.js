@@ -48,27 +48,22 @@ const Members = () => {
   const [error, setError] = useState('');
   const [openDropdown, setOpenDropdown] = useState(null); // State for kebab menu
   const [searchTerm, setSearchTerm] = useState(''); // State for search input
+  const [isViewMoreModalOpen, setViewMoreModalOpen] = useState(false);
+const [viewMoreUser, setViewMoreUser] = useState(null);
+
 
   // Filtered team members based on search term
   const filteredTeam = team.filter(member =>
     member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     member.role.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  
 
   const handleViewMore = (user) => {
-    alert(`User Details:
-      User ID: ${user.user_id}
-      Name: ${user.name}
-      Role: ${user.role}
-      Phone Number: ${user.phone_number}
-      Email ID: ${user.email_id}
-      Alternate Phone Number: ${user.alternate_pho_no}
-      Status: ${user.status ? "Active" : "Inactive"}
-      Clients: ${user.clients.join(", ")}
-      Reporting To: ${user.reporting_to}
-      Tasks: ${user.tasks.join(", ")}
-      Password: ${user.password}`);
+    setViewMoreUser(user);
+    setViewMoreModalOpen(true);
   };
+  
 
   const handleUpdate = (user) => {
     setSelectedUser(user);
@@ -334,6 +329,21 @@ const Members = () => {
           </form>
         </div>
       )}
+      {isViewMoreModalOpen && viewMoreUser && (
+  <div className="modal">
+    <h2>User Details</h2>
+    <p><strong>Name:</strong> {viewMoreUser.name}</p>
+    <p><strong>Role:</strong> {viewMoreUser.role}</p>
+    <p><strong>Phone Number:</strong> {viewMoreUser.phone_number}</p>
+    <p><strong>Email ID:</strong> {viewMoreUser.email_id}</p>
+    <p><strong>Alternate Phone Number:</strong> {viewMoreUser.alternate_pho_no}</p>
+    <p><strong>Clients:</strong> {viewMoreUser.clients.join(", ")}</p>
+    <p><strong>Reporting To:</strong> {viewMoreUser.reporting_to}</p>
+    <p><strong>Tasks:</strong> {viewMoreUser.tasks.join(", ")}</p>
+    <button className="close-btn" onClick={() => setViewMoreModalOpen(false)}>Close</button>
+  </div>
+)}
+
     </div>
   );
 };
