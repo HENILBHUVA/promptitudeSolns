@@ -1,9 +1,19 @@
 /* Navbar Container */
 .navbar {
+  position: fixed;
+  top: 60px; /* Move the navbar down to avoid overlap with the header */
+  left: 0;
   width: 20%;
-  background-color: #2c2e34; 
-  padding: 10px;
-  height: 100vh;
+  height: calc(100% - 60px); /* Adjust height to account for the header */
+  background-color: #222;
+  color: white;
+  z-index: 999; /* Slightly lower z-index than the header */
+  overflow-y: scroll; /* Enable vertical scroll for overflow */
+  scrollbar-width: none;
+}
+
+.navbar::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera - hide scrollbar */
 }
 
 /* Navbar List */

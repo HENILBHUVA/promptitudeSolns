@@ -5,6 +5,11 @@
   align-items: center;
   padding: 10px 20px;
   font-weight: bold;
+  height: 60px; /* Set fixed height for the header */
+  position: fixed; /* Keep the header fixed */
+  top: 0;
+  width: 100%; /* Make sure it spans the full width */
+  z-index: 1000; /* Ensure it stays on top of the navbar */
 }
 
 .header h1 {
