@@ -93,7 +93,7 @@ const Members = () => {
       [], // Default tasks
       'default_password' // Placeholder password
     );
-    
+
     const updatedTeam = addMember(team, memberData);
     setTeam(updatedTeam);
     setAddModalOpen(false);
@@ -131,7 +131,7 @@ const Members = () => {
       <div className="search-bar-container">
         <div className="input-wrapper">
           <FaSearch className="search-icon" />
-          <input 
+          <input
             type="text"
             placeholder="Search by name or role..."
             value={searchTerm}
@@ -198,12 +198,14 @@ const Members = () => {
             <label>Role: </label>
             <select
               name="role"
-              value={selectedUser.role}
+              value={selectedUser.role || ""}
               onChange={(e) => setSelectedUser({ ...selectedUser, role: e.target.value })}
             >
+              <option value="" disabled>Select the Role...</option>
               <option value="Admin">Admin</option>
               <option value="Member">Member</option>
             </select>
+
             {/* <br /> */}
             <label>Reporting To: </label>
             <select
@@ -262,13 +264,15 @@ const Members = () => {
             {/* <br /> */}
             <label>Role: </label>
             <select
-              value={newUser.role}
+              value={newUser.role || ""}
               onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
               className="styled-select"
             >
+              <option value="" disabled>Select the Role...</option>
               <option value="Admin">Admin</option>
               <option value="Member">Member</option>
             </select>
+
             {/* <br /> */}
             <label>Email ID: </label>
             <input
@@ -277,25 +281,25 @@ const Members = () => {
               onChange={(e) => setNewUser({ ...newUser, email_id: e.target.value })}
             />
             {/* <br /> */}
-           <div className='row-fields'>
-          <div>
-          <label>Phone Number: </label>
-            <input
-              type="text"
-              value={newUser.phone_number}
-              onChange={(e) => setNewUser({ ...newUser, phone_number: e.target.value })}
-            />
-          </div>
-            {/* <br /> */}
-          <div>
-          <label>Alternate Phone Number: </label>
-            <input
-              type="text"
-              value={newUser.alternate_pho_no}
-              onChange={(e) => setNewUser({ ...newUser, alternate_pho_no: e.target.value })}
-            />
-          </div>
-           </div>
+            <div className='row-fields'>
+              <div>
+                <label>Phone Number: </label>
+                <input
+                  type="text"
+                  value={newUser.phone_number}
+                  onChange={(e) => setNewUser({ ...newUser, phone_number: e.target.value })}
+                />
+              </div>
+              {/* <br /> */}
+              <div>
+                <label>Alternate Phone Number: </label>
+                <input
+                  type="text"
+                  value={newUser.alternate_pho_no}
+                  onChange={(e) => setNewUser({ ...newUser, alternate_pho_no: e.target.value })}
+                />
+              </div>
+            </div>
             {/* <br /> */}
             <label>Reporting To: </label>
             <select
