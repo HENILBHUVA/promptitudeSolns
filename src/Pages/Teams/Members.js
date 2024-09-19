@@ -1,38 +1,14 @@
 import React, { useState } from 'react';
 import './Members.css';
 import { FaSearch, FaEllipsisV, FaTimes } from 'react-icons/fa';
-
-// User Class
-class User {
-  constructor(user_id, name, role, phone_number, email_id, alternate_pho_no, status, clients, reporting_to, tasks, password) {
-    this.user_id = user_id;
-    this.name = name;
-    this.role = role;
-    this.phone_number = phone_number;
-    this.email_id = email_id;
-    this.alternate_pho_no = alternate_pho_no;
-    this.status = status;
-    this.clients = clients;
-    this.reporting_to = reporting_to;
-    this.tasks = tasks;
-    this.password = password;
-  }
-}
-
-// Sample Data
-const teamMembers = [
-  new User(1, "John Doe", "Admin", "123-456-7890", "john@example.com", "111-222-3333", true, ["Client A"], "Jane Smith", ["Task 1"], "hashed_password_1"),
-  new User(2, "Jane Smith", "Member", "123-456-7891", "jane@example.com", "222-333-4444", true, ["Client B"], "John Doe", ["Task 2"], "hashed_password_2"),
-  new User(3, "Emily Clark", "Member", "123-456-7896", "emily@example.com", "777-888-9999", true, ["Client F"], "John Doe", ["Task 7"], "hashed_password_6"),
-  new User(4, "Michael Brown", "Manager", "123-456-7897", "michael@example.com", "888-999-0000", true, ["Client G"], "Jane Smith", ["Task 8", "Task 9"], "hashed_password_7"),
-];
+import { User, teamMembers, updateUser, changePassword, toggleUserStatus, addMember } from '../../Drafts/User';
 
 const Members = () => {
   const [team, setTeam] = useState(teamMembers);
   const [selectedUser, setSelectedUser] = useState(null);
   const [isUpdateModalOpen, setUpdateModalOpen] = useState(false);
   const [isPasswordModalOpen, setPasswordModalOpen] = useState(false);
-  const [isAddModalOpen, setAddModalOpen] = useState(false); // State for Add Modal
+  const [isAddModalOpen, setAddModalOpen] = useState(false);
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [newUser, setNewUser] = useState({
@@ -46,12 +22,11 @@ const Members = () => {
     clients: [],
   });
   const [error, setError] = useState('');
-  const [openDropdown, setOpenDropdown] = useState(null); // State for kebab menu
-  const [searchTerm, setSearchTerm] = useState(''); // State for search input
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
   const [isViewMoreModalOpen, setViewMoreModalOpen] = useState(false);
   const [viewMoreUser, setViewMoreUser] = useState(null);
 
-  // Filtered team members based on search term
   const filteredTeam = team.filter(member =>
     member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     member.role.toLowerCase().includes(searchTerm.toLowerCase())
@@ -77,15 +52,13 @@ const Members = () => {
       `Are you sure you want to ${user.status ? 'disable' : 'enable'} this user?`
     );
     if (confirmed) {
-      const updatedTeam = team.map((u) =>
-        u.user_id === user.user_id ? { ...u, status: !u.status } : u
-      );
+      const updatedTeam = toggleUserStatus(team, user.user_id);
       setTeam(updatedTeam);
     }
   };
 
   const handleUpdateUser = (updatedUser) => {
-    const updatedTeam = team.map((u) => (u.user_id === updatedUser.user_id ? updatedUser : u));
+    const updatedTeam = updateUser(team, updatedUser);
     setTeam(updatedTeam);
     setUpdateModalOpen(false);
   };
@@ -96,9 +69,7 @@ const Members = () => {
       return;
     }
     if (newPassword === confirmPassword) {
-      const updatedTeam = team.map((u) =>
-        u.user_id === selectedUser.user_id ? { ...u, password: newPassword } : u
-      );
+      const updatedTeam = changePassword(team, selectedUser.user_id, newPassword);
       setTeam(updatedTeam);
       setPasswordModalOpen(false);
       setError('');
@@ -109,13 +80,22 @@ const Members = () => {
   };
 
   const handleAddMember = () => {
-    const memberData = {
-      ...newUser,
-      user_id: team.length + 1, // Incremental ID
-      status: true, // Default to active
-      password: 'default_password', // Placeholder password
-    };
-    setTeam([...team, memberData]);
+    const memberData = new User(
+      team.length + 1, // Incremental ID
+      newUser.name,
+      newUser.role,
+      newUser.phone_number,
+      newUser.email_id,
+      newUser.alternate_pho_no,
+      true, // Default to active
+      [], // Default clients
+      newUser.reporting_to,
+      [], // Default tasks
+      'default_password' // Placeholder password
+    );
+    
+    const updatedTeam = addMember(team, memberData);
+    setTeam(updatedTeam);
     setAddModalOpen(false);
     setNewUser({
       name: '',

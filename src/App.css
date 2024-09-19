@@ -20,8 +20,11 @@ body {
   flex: 1;
 }
 
+
 .main-screen {
-  flex: 4; /* 80% width */
-  background-color: #f4f4f4;
+  margin-top: 60px; /* Adjust content to not overlap the header */
+  margin-left: 20%;
   padding: 20px;
+  background-color: #f4f4f4;
+  flex: 4; /* 80% width */
 }
